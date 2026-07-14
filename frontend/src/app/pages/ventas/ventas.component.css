@@ -1,0 +1,6 @@
+ .ventas { padding: 20px; display: grid; gap: 10px; }
+input { max-width: 480px; padding: 10px; font-size: 1.1rem; }
+button { width: fit-content; padding: 8px 14px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid #d7d7d7; padding: 8px; text-align: left; }
+.mensaje { color: #0d47a1; font-weight: 600; }
