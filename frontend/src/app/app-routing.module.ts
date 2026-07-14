@@ -12,13 +12,13 @@ const routes: Routes = [
     path: 'admin/dashboard',
     component: AdminDashboardComponent,
     canActivate: [AuthGuard, RoleGuard],
-    data: { roles: ['ADMIN'] }
+    data: { roles: ['ADMINISTRADOR'] }
   },
   {
     path: 'admin/ventas',
     component: VentasComponent,
     canActivate: [AuthGuard, RoleGuard],
-    data: { roles: ['ADMIN'] }
+    data: { roles: ['ADMINISTRADOR'] }
   },
   {
     path: 'vendedor/ventas',

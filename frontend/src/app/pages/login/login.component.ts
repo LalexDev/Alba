@@ -37,7 +37,7 @@ export class LoginComponent {
       next: () => {
         this.loading = false;
         const role = this.tokenService.getRole();
-        this.router.navigate([role === 'ADMIN' ? '/admin/dashboard' : '/vendedor/ventas']);
+        this.router.navigate([role === 'ADMINISTRADOR' ? '/admin/dashboard' : '/vendedor/ventas']);
       },
       error: () => {
         this.loading = false;

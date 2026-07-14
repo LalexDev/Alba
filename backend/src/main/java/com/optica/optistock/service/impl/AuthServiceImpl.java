@@ -46,15 +46,15 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public UsuarioDto registerAdmin(RegisterAdminRequest request) {
-        if (usuarioRepository.findAll().stream().anyMatch(u -> u.getRole().getNombre() == RoleNombre.ADMIN)) {
+        if (usuarioRepository.findAll().stream().anyMatch(u -> u.getRole().getNombre() == RoleNombre.ADMINISTRADOR)) {
             throw new BadRequestException("Ya existe un administrador registrado");
         }
         if (usuarioRepository.existsByUsername(request.getUsername()) || usuarioRepository.existsByCorreo(request.getCorreo())) {
             throw new BadRequestException("Username o correo ya registrado");
         }
 
-        var role = roleRepository.findByNombre(RoleNombre.ADMIN)
-                .orElseThrow(() -> new NotFoundException("Rol ADMIN no encontrado"));
+        var role = roleRepository.findByNombre(RoleNombre.ADMINISTRADOR)
+                .orElseThrow(() -> new NotFoundException("Rol Administrador no encontrado"));
 
         var user = Usuario.builder()
                 .nombres(request.getNombres())
