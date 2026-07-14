@@ -1,0 +1,31 @@
+<div class="ventas">
+  <h2>Ventas</h2>
+  <label for="barcode">Escanear código de barras</label>
+  <input
+    #barcodeInput
+    id="barcode"
+    [(ngModel)]="codigo"
+    (keyup.enter)="buscarPorCodigo()"
+    placeholder="Escanear o ingresar código"
+  />
+  <button (click)="buscarPorCodigo()">Buscar</button>
+
+  <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+
+  <table *ngIf="carrito.length">
+    <thead>
+      <tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Subtotal</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of carrito">
+        <td>{{ item.producto.nombre }}</td>
+        <td>{{ item.cantidad }}</td>
+        <td>{{ item.producto.precioVenta | number:'1.2-2' }}</td>
+        <td>{{ item.subtotal | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Total: {{ total() | number:'1.2-2' }}</h3>
+  <button (click)="confirmarVenta()">Confirmar venta</button>
+</div>
