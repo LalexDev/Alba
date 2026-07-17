@@ -1,90 +1,27 @@
-# OptiStock Pro (Alba)
+# Frontend
 
-Sistema web para óptica con backend en **Spring Boot 3 + Java 21** y frontend en **Angular**.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
 
-## Tecnologías
+## Development server
 
-- Backend: Spring Boot 3, Spring Security, JWT, Spring Data JPA, PostgreSQL, Lombok, Validation, OpenAPI.
-- Frontend: Angular, TypeScript, Angular Router, formularios reactivos, interceptor JWT, guards.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Estructura
+## Code scaffolding
 
-- `/backend`: API REST y lógica de negocio principal.
-- `/frontend`: aplicación web (login, dashboard admin y ventas con flujo de escaneo).
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Requisitos
+## Build
 
-- Java 21
-- Maven 3.9+
-- Node.js 20+
-- PostgreSQL 14+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Configuración PostgreSQL
+## Running unit tests
 
-Crear base de datos:
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-```sql
-CREATE DATABASE optistock_db;
-```
+## Running end-to-end tests
 
-Variables de entorno backend:
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-- `DB_URL` (default: `jdbc:postgresql://localhost:5432/optistock_db`)
-- `DB_USER` (default: `postgres`)
-- `DB_PASSWORD` (default: `postgres`)
-- `JWT_SECRET` (mínimo 64 caracteres)
+## Further help
 
-## Usuario inicial
-
-- username: `admin`
-- correo: `admin@optica.com`
-- password: `Admin123456`
-- rol: `ADMIN`
-
-## Ejecución backend
-
-```bash
-cd /home/runner/work/Alba/Alba/backend
-mvn clean install
-mvn spring-boot:run
-```
-
-Swagger:
-
-- `http://localhost:8080/swagger-ui/index.html`
-
-## Ejecución frontend
-
-```bash
-cd /home/runner/work/Alba/Alba/frontend
-npm install
-npm run start
-```
-
-## Endpoints principales
-
-- Auth: `/api/auth/login`, `/api/auth/register-admin`, `/api/auth/me`
-- Usuarios: `/api/usuarios`
-- Clientes: `/api/clientes`
-- Productos: `/api/productos`, `/api/productos/codigo/{codigoBarras}`
-- Ventas: `/api/ventas`
-- Inventario: `/api/inventario/movimientos`, `/api/inventario/entrada`, `/api/inventario/salida`, `/api/inventario/ajuste`
-- Reportes: `/api/reportes/dashboard`, `/api/reportes/ventas`, `/api/reportes/bajo-stock`
-- Configuración: `/api/configuracion`
-
-## Flujo de ventas con lector de código
-
-1. Ingresar a pantalla de ventas.
-2. Campo “Escanear código de barras” enfocado automáticamente.
-3. Escanear o escribir código y presionar Enter.
-4. Producto se agrega al carrito (o incrementa cantidad si ya existe).
-5. Validación de existencia/estado/stock.
-6. Confirmar venta para descontar stock y registrar movimiento.
-
-## Pruebas sugeridas
-
-- Login ADMIN y VENDEDOR.
-- Registro de producto con código único.
-- Venta con stock (debe descontar inventario).
-- Venta sin stock (debe bloquearse).
-- Consulta de bajo stock en reportes.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
