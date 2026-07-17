@@ -481,3 +481,126 @@
     font-size: 16px;
   }
 }
+/* =====================================================
+   FORMULARIO DE CLIENTE RÁPIDO
+   ===================================================== */
+
+.cliente-card {
+  overflow: hidden;
+}
+
+.cliente-card .cliente-rapido-form {
+  width: 100%;
+  margin-top: 16px;
+  padding: 18px;
+
+  border: 1px solid #8fd1ec;
+  border-radius: 16px;
+
+  background: #f8fcfe;
+}
+
+.cliente-card .cliente-grid {
+  display: grid !important;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.cliente-card .cliente-grid .field {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 7px;
+
+  width: 100%;
+  min-width: 0;
+}
+
+.cliente-card .cliente-grid .field.full {
+  grid-column: 1 / -1;
+}
+
+.cliente-card .cliente-grid .field label {
+  display: block;
+  width: 100%;
+  margin: 0;
+
+  color: #000000;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.cliente-card .cliente-grid .field label span {
+  color: #555555;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.cliente-card .cliente-grid .field input {
+  display: block;
+  width: 100% !important;
+  height: 46px;
+  min-width: 0;
+
+  padding: 0 13px;
+
+  border: 1px solid #8fd1ec;
+  border-radius: 11px;
+  outline: none;
+
+  color: #000000;
+  background: #ffffff;
+
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.cliente-card .cliente-grid .field input:focus {
+  border-color: #1593c7;
+  box-shadow:
+    0 0 0 3px
+    rgba(21, 147, 199, 0.14);
+}
+
+.cliente-card .cliente-grid .field input::placeholder {
+  color: #7b8792;
+}
+
+.cliente-card .cliente-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  width: 100%;
+  margin-top: 18px;
+}
+
+.cliente-card .cliente-form-actions button {
+  min-height: 42px;
+  padding: 9px 17px;
+}
+
+.cliente-card .small-btn {
+  min-width: 145px;
+}
+
+@media (max-width: 700px) {
+  .cliente-card .cliente-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cliente-card .cliente-grid .field.full {
+    grid-column: auto;
+  }
+
+  .cliente-card .cliente-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cliente-card .cliente-form-actions button {
+    width: 100%;
+  }
+}
