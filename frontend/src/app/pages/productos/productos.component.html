@@ -1,0 +1,45 @@
+<div class="page-stack">
+  <div class="card">
+    <div class="toolbar">
+      <div class="search"><input [(ngModel)]="search" placeholder="Buscar por código, producto, categoría o descripción..." /></div>
+      <div class="actions">
+        <button class="btn" type="button" (click)="mostrarFormulario = !mostrarFormulario">+ Registrar producto</button>
+        <button class="btn secondary" type="button" (click)="exportarExcel()">Exportar Excel</button>
+      </div>
+    </div>
+
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="guardar()" *ngIf="mostrarFormulario">
+      <div class="field"><label>Código de barras</label><input formControlName="codigoBarras" placeholder="OPT-000001" /></div>
+      <div class="field" style="align-self:end;"><button class="btn secondary full" type="button" (click)="generarCodigo()">Generar código</button></div>
+      <div class="field"><label>Categoría</label><select formControlName="categoriaId"><option *ngFor="let c of categorias" [value]="c.id">{{ c.nombre }}</option></select></div>
+      <div class="field"><label>Producto</label><input formControlName="nombre" placeholder="Montura metálica clásica" /></div>
+      <div class="field"><label>Precio compra</label><input type="number" formControlName="precioCompra" /></div>
+      <div class="field"><label>Precio venta</label><input type="number" formControlName="precioVenta" /></div>
+      <div class="field"><label>Stock actual</label><input type="number" formControlName="stockActual" /></div>
+      <div class="field"><label>Stock mínimo</label><input type="number" formControlName="stockMinimo" /></div>
+      <div class="field wide"><label>Descripción</label><textarea rows="2" formControlName="descripcion"></textarea></div>
+      <div class="wide form-actions"><button class="btn secondary" type="button" (click)="mostrarFormulario = false">Cancelar</button><button class="btn" type="submit">Guardar producto</button></div>
+    </form>
+
+    <p class="ok-text" *ngIf="ok">{{ ok }}</p>
+    <p class="alert-text" *ngIf="error">{{ error }}</p>
+
+    <div class="table-wrap" *ngIf="filtrados.length; else emptyProducts">
+      <table>
+        <thead><tr><th>Código</th><th>Producto</th><th>Categoría</th><th>Precio</th><th>Stock</th><th>Mínimo</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let p of filtrados" [class.low-stock]="(p.stockActual || 0) <= (p.stockMinimo || 0)">
+            <td><b>{{ p.codigoBarras }}</b></td>
+            <td>{{ p.nombre }}<br><span class="muted">{{ p.descripcion }}</span></td>
+            <td>{{ p.categoria?.nombre || '-' }}</td>
+            <td>S/ {{ p.precioVenta | number:'1.2-2' }}</td>
+            <td>{{ p.stockActual }}</td>
+            <td>{{ p.stockMinimo || 0 }}</td>
+            <td><span class="badge" [class.success]="p.estado" [class.danger]="!p.estado">{{ p.estado ? 'Activo' : 'Inactivo' }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #emptyProducts><div class="empty">Aún no hay productos registrados.</div></ng-template>
+  </div>
+</div>
