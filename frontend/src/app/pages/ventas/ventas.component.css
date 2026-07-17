@@ -342,39 +342,150 @@
   color: #1565ff;
 }
 
+
+/* =====================================================
+   MÉTODOS DE PAGO CON ÍCONOS SVG
+   ===================================================== */
+
 .metodo-section {
-  margin-top: 8px;
-  padding-top: 10px;
+  width: 100%;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #d7edf7;
 }
 
 .metodo-section h3 {
   margin: 0 0 14px;
-  font-size: 18px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .metodos-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
+  width: 100%;
 }
 
 .metodo-btn {
-  min-height: 72px;
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  min-width: 0;
+  min-height: 105px;
+  padding: 12px 8px;
   border: 1px solid #8fd1ec;
-  border-radius: 16px;
-  background: #fff;
-  color: #000;
-  font-size: 15px;
-  font-weight: 700;
+  border-radius: 15px;
+  color: #000000;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.metodo-btn:hover {
+  color: #0e78a5;
+  border-color: #1593c7;
+  background: #eaf7fc;
+  transform: translateY(-2px);
 }
 
 .metodo-btn.active {
-  border-color: #1565ff;
-  background: #eef5ff;
-  color: #1565ff;
+  color: #0e78a5;
+  border: 2px solid #1593c7;
+  background: #eaf7fc;
+  box-shadow:
+    0 0 0 3px rgba(21, 147, 199, 0.12),
+    0 6px 16px rgba(21, 147, 199, 0.12);
+}
+
+.metodo-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 11px;
+  color: #1593c7;
+  background: #eaf7fc;
+}
+
+.metodo-icon svg {
+  width: 27px;
+  height: 27px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.metodo-icon-yape {
+  color: #1593c7;
+}
+
+.metodo-btn.active .metodo-icon {
+  color: #ffffff;
+  background: #1593c7;
+}
+
+.metodo-nombre {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .metodos-grid {
+    gap: 8px;
+  }
+
+  .metodo-btn {
+    min-height: 94px;
+    padding-inline: 5px;
+    font-size: 11px;
+  }
+
+  .metodo-icon {
+    width: 39px;
+    height: 39px;
+  }
+
+  .metodo-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 500px) {
+  .metodos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metodo-btn {
+    flex-direction: row;
+    justify-content: flex-start;
+    min-height: 64px;
+    padding: 10px 16px;
+  }
+
+  .metodo-nombre {
+    width: auto;
+    text-align: left;
+  }
 }
 
 /* INFO CARD */

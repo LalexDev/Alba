@@ -35,6 +35,7 @@ export interface Producto {
   precioVenta: number;
   stockActual: number;
   stockMinimo?: number;
+  fechaIngreso?: string;
   estado: boolean;
   categoria?: Categoria;
   marca?: Marca;
@@ -42,14 +43,19 @@ export interface Producto {
 }
 
 export interface ProductoRequest {
+  codigoInterno?: string;
   codigoBarras: string;
   nombre: string;
   descripcion?: string;
+  modelo?: string;
+  color?: string;
+  medida?: string;
+  material?: string;
   precioCompra: number;
   precioVenta: number;
   stockActual: number;
   stockMinimo: number;
-  categoriaId: number | null;
+  categoriaId: number;
   marcaId?: number | null;
   proveedorId?: number | null;
 }
